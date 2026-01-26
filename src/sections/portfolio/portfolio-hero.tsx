@@ -81,6 +81,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
           { name: 'Node.js', icon: 'logos:nodejs-icon' },
           { name: 'n8n', icon: 'simple-icons:n8n' },
           { name: 'ChatGPT', icon: 'logos:openai-icon' },
+          { name: 'Claude', icon: 'simple-icons:anthropic' },
         ].map((tech) => (
           <m.div key={tech.name} variants={variants}>
             <Box

@@ -226,6 +226,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
               left: `calc(50% + ${Math.cos((angle * Math.PI) / 180) * radius}px)`,
               top: `calc(50% + ${Math.sin((angle * Math.PI) / 180) * radius}px)`,
               transform: 'translate(-50%, -50%)',
+              zIndex: 1,
             }}
           >
             <Box
@@ -249,8 +250,9 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       <Box
         sx={(theme) => ({
           position: 'absolute',
-          top: '5%',
-          right: '0%',
+          top: '-5%',
+          right: '-10%',
+          zIndex: 0,
           p: 1.5,
           borderRadius: 1.5,
           bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
@@ -290,8 +292,9 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       <Box
         sx={(theme) => ({
           position: 'absolute',
-          bottom: '15%',
-          left: '0%',
+          bottom: '0%',
+          left: '-15%',
+          zIndex: 0,
           p: 1.5,
           borderRadius: 1.5,
           bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),

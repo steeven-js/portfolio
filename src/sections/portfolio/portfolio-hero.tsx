@@ -136,12 +136,13 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       component={m.div}
       variants={varFade('inRight', { distance: 40 })}
       sx={{
-        flex: '1 1 auto',
+        flex: '0 0 auto',
         display: { xs: 'none', md: 'flex' },
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative',
-        minHeight: 400,
+        width: { md: 420, lg: 480 },
+        minHeight: 380,
       }}
     >
       {/* Central glowing orb */}
@@ -201,7 +202,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       {/* Floating tech icons */}
       {FLOATING_ICONS.map((item, index) => {
         const angle = (index / FLOATING_ICONS.length) * 360;
-        const radius = 160;
+        const radius = 140;
 
         return (
           <m.div
@@ -247,8 +248,8 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       <Box
         sx={{
           position: 'absolute',
-          top: '10%',
-          right: '5%',
+          top: '5%',
+          right: '0%',
           opacity: 0.6,
         }}
       >
@@ -334,9 +335,9 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           flexDirection: { xs: 'column', md: 'row' },
-          gap: { xs: 5, md: 8 },
+          gap: { xs: 5, md: 4 },
         }}
       >
         <MotionViewport

@@ -16,6 +16,17 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
+const FLOATING_ICONS = [
+  { icon: 'logos:laravel', size: 48, delay: 0 },
+  { icon: 'logos:react', size: 44, delay: 0.5 },
+  { icon: 'logos:typescript-icon', size: 40, delay: 1 },
+  { icon: 'logos:swift', size: 42, delay: 1.5 },
+  { icon: 'logos:nodejs-icon', size: 46, delay: 2 },
+  { icon: 'logos:openai-icon', size: 50, delay: 2.5 },
+];
+
+// ----------------------------------------------------------------------
+
 const variants: Variants = varFade('inUp', { distance: 24 });
 
 export function PortfolioHero({ sx, ...other }: BoxProps) {
@@ -120,7 +131,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
     </Box>
   );
 
-  const renderImage = () => (
+  const renderCodeAnimation = () => (
     <Box
       component={m.div}
       variants={varFade('inRight', { distance: 40 })}
@@ -129,20 +140,166 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         display: { xs: 'none', md: 'flex' },
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative',
+        minHeight: 400,
       }}
     >
+      {/* Central glowing orb */}
       <Box
-        component="img"
-        alt="Steeven Jacques"
-        src={`${CONFIG.assetsDir}/assets/images/portrait/steeven-serious.png`}
+        sx={(theme) => ({
+          width: 180,
+          height: 180,
+          borderRadius: '50%',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: `radial-gradient(circle, ${varAlpha(theme.vars.palette.primary.mainChannel, 0.15)} 0%, transparent 70%)`,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: -4,
+            borderRadius: '50%',
+            padding: '3px',
+            background: `linear-gradient(135deg, ${theme.vars.palette.primary.main}, ${theme.vars.palette.secondary.main})`,
+            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            WebkitMaskComposite: 'xor',
+            maskComposite: 'exclude',
+          },
+        })}
+      >
+        <m.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          style={{ position: 'absolute', inset: -4 }}
+        >
+          <Box
+            sx={(theme) => ({
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              border: `2px dashed ${varAlpha(theme.vars.palette.primary.mainChannel, 0.3)}`,
+            })}
+          />
+        </m.div>
+
+        <m.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <Iconify
+            icon="fluent:brain-circuit-24-filled"
+            width={64}
+            sx={(theme) => ({
+              color: theme.vars.palette.primary.main,
+              filter: `drop-shadow(0 0 20px ${varAlpha(theme.vars.palette.primary.mainChannel, 0.5)})`,
+            })}
+          />
+        </m.div>
+      </Box>
+
+      {/* Floating tech icons */}
+      {FLOATING_ICONS.map((item, index) => {
+        const angle = (index / FLOATING_ICONS.length) * 360;
+        const radius = 160;
+
+        return (
+          <m.div
+            key={item.icon}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              x: [0, 10, 0, -10, 0],
+              y: [0, -10, 0, 10, 0],
+            }}
+            transition={{
+              opacity: { delay: item.delay, duration: 0.5 },
+              scale: { delay: item.delay, duration: 0.5 },
+              x: { delay: item.delay + 0.5, duration: 4, repeat: Infinity, ease: 'easeInOut' },
+              y: { delay: item.delay + 0.5, duration: 5, repeat: Infinity, ease: 'easeInOut' },
+            }}
+            style={{
+              position: 'absolute',
+              left: `calc(50% + ${Math.cos((angle * Math.PI) / 180) * radius}px)`,
+              top: `calc(50% + ${Math.sin((angle * Math.PI) / 180) * radius}px)`,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <Box
+              sx={(theme) => ({
+                p: 1.5,
+                borderRadius: 2,
+                bgcolor: 'background.paper',
+                boxShadow: theme.vars.customShadows.z16,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              })}
+            >
+              <Iconify icon={item.icon} width={item.size} />
+            </Box>
+          </m.div>
+        );
+      })}
+
+      {/* Animated code lines */}
+      <Box
         sx={{
-          maxWidth: 420,
-          width: '100%',
-          height: 'auto',
-          objectFit: 'contain',
-          filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+          position: 'absolute',
+          top: '10%',
+          right: '5%',
+          opacity: 0.6,
         }}
-      />
+      >
+        <m.div
+          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <Typography
+            component="pre"
+            sx={{
+              fontFamily: 'monospace',
+              fontSize: 11,
+              color: 'primary.main',
+              textAlign: 'left',
+            }}
+          >
+{`const developer = {
+  name: "Steeven",
+  passion: "Code & IA"
+};`}
+          </Typography>
+        </m.div>
+      </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '15%',
+          left: '0%',
+          opacity: 0.6,
+        }}
+      >
+        <m.div
+          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+        >
+          <Typography
+            component="pre"
+            sx={{
+              fontFamily: 'monospace',
+              fontSize: 11,
+              color: 'secondary.main',
+              textAlign: 'left',
+            }}
+          >
+{`async transform(idea) {
+  return solution;
+}`}
+          </Typography>
+        </m.div>
+      </Box>
     </Box>
   );
 
@@ -194,7 +351,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         </MotionViewport>
 
         <MotionViewport>
-          {renderImage()}
+          {renderCodeAnimation()}
         </MotionViewport>
       </Container>
     </Box>

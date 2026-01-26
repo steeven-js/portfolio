@@ -257,23 +257,22 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
           x: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
           y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
         }}
-        sx={(theme) => {
-          const isLight = theme.palette.mode === 'light';
-          return {
-            position: 'absolute',
-            top: '-5%',
-            right: '-10%',
-            zIndex: 0,
-            p: 1.5,
-            borderRadius: 1.5,
-            bgcolor: isLight
-              ? varAlpha(theme.vars.palette.grey['100Channel'], 0.95)
-              : varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
-            backdropFilter: 'blur(8px)',
-            border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], isLight ? 0.3 : 0.2)}`,
-            boxShadow: theme.vars.customShadows.z8,
-          };
-        }}
+        sx={(theme) => ({
+          position: 'absolute',
+          top: '-5%',
+          right: '-10%',
+          zIndex: 0,
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: varAlpha(theme.vars.palette.grey['100Channel'], 0.95),
+          backdropFilter: 'blur(8px)',
+          border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.3)}`,
+          boxShadow: theme.vars.customShadows.z8,
+          ...theme.applyStyles('dark', {
+            bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
+            border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.2)}`,
+          }),
+        })}
       >
         <m.div
           animate={{ opacity: [0.8, 1, 0.8] }}
@@ -281,22 +280,27 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         >
           <Typography
             component="pre"
-            sx={(theme) => {
-              const isLight = theme.palette.mode === 'light';
-              return {
-                fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
-                fontSize: 10,
-                lineHeight: 1.6,
-                textAlign: 'left',
-                m: 0,
-                color: isLight ? '#1e1e1e' : '#e4e4e7',
-                '& .keyword': { color: isLight ? '#8b5cf6' : '#c084fc' },
-                '& .string': { color: isLight ? '#16a34a' : '#4ade80' },
-                '& .property': { color: isLight ? '#2563eb' : '#60a5fa' },
-                '& .punctuation': { color: isLight ? '#64748b' : '#a1a1aa' },
-                '& .variable': { color: isLight ? '#0f172a' : '#f4f4f5' },
-              };
-            }}
+            sx={(theme) => ({
+              fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
+              fontSize: 10,
+              lineHeight: 1.6,
+              textAlign: 'left',
+              m: 0,
+              color: '#1e1e1e',
+              '& .keyword': { color: '#8b5cf6' },
+              '& .string': { color: '#16a34a' },
+              '& .property': { color: '#2563eb' },
+              '& .punctuation': { color: '#64748b' },
+              '& .variable': { color: '#0f172a' },
+              ...theme.applyStyles('dark', {
+                color: '#e4e4e7',
+                '& .keyword': { color: '#c084fc' },
+                '& .string': { color: '#4ade80' },
+                '& .property': { color: '#60a5fa' },
+                '& .punctuation': { color: '#a1a1aa' },
+                '& .variable': { color: '#f4f4f5' },
+              }),
+            })}
           >
             <span className="keyword">const</span> <span className="variable">developer</span> <span className="punctuation">=</span> {'{\n'}
             {'  '}<span className="property">name</span><span className="punctuation">:</span> <span className="string">&quot;Steeven&quot;</span><span className="punctuation">,</span>{'\n'}
@@ -317,23 +321,22 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
           x: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
           y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
         }}
-        sx={(theme) => {
-          const isLight = theme.palette.mode === 'light';
-          return {
-            position: 'absolute',
-            bottom: '10%',
-            left: '5%',
-            zIndex: 0,
-            p: 1.5,
-            borderRadius: 1.5,
-            bgcolor: isLight
-              ? varAlpha(theme.vars.palette.grey['100Channel'], 0.95)
-              : varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
-            backdropFilter: 'blur(8px)',
-            border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], isLight ? 0.3 : 0.2)}`,
-            boxShadow: theme.vars.customShadows.z8,
-          };
-        }}
+        sx={(theme) => ({
+          position: 'absolute',
+          bottom: '10%',
+          left: '5%',
+          zIndex: 0,
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: varAlpha(theme.vars.palette.grey['100Channel'], 0.95),
+          backdropFilter: 'blur(8px)',
+          border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.3)}`,
+          boxShadow: theme.vars.customShadows.z8,
+          ...theme.applyStyles('dark', {
+            bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
+            border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.2)}`,
+          }),
+        })}
       >
         <m.div
           animate={{ opacity: [0.8, 1, 0.8] }}
@@ -341,21 +344,25 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         >
           <Typography
             component="pre"
-            sx={(theme) => {
-              const isLight = theme.palette.mode === 'light';
-              return {
-                fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
-                fontSize: 10,
-                lineHeight: 1.6,
-                textAlign: 'left',
-                m: 0,
-                color: isLight ? '#1e1e1e' : '#e4e4e7',
-                '& .keyword': { color: isLight ? '#db2777' : '#f472b6' },
-                '& .function': { color: isLight ? '#d97706' : '#fbbf24' },
-                '& .comment': { color: isLight ? '#94a3b8' : '#71717a' },
-                '& .punctuation': { color: isLight ? '#64748b' : '#a1a1aa' },
-              };
-            }}
+            sx={(theme) => ({
+              fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
+              fontSize: 10,
+              lineHeight: 1.6,
+              textAlign: 'left',
+              m: 0,
+              color: '#1e1e1e',
+              '& .keyword': { color: '#db2777' },
+              '& .function': { color: '#d97706' },
+              '& .comment': { color: '#94a3b8' },
+              '& .punctuation': { color: '#64748b' },
+              ...theme.applyStyles('dark', {
+                color: '#e4e4e7',
+                '& .keyword': { color: '#f472b6' },
+                '& .function': { color: '#fbbf24' },
+                '& .comment': { color: '#71717a' },
+                '& .punctuation': { color: '#a1a1aa' },
+              }),
+            })}
           >
             {/* prettier-ignore */}
             <span className="comment">{`${'//'}Transform ideas`}</span>{'\n'}

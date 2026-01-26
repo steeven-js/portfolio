@@ -143,6 +143,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         position: 'relative',
         width: { md: 420, lg: 480 },
         minHeight: 380,
+        overflow: 'visible',
       }}
     >
       {/* Central glowing orb */}
@@ -246,58 +247,83 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
 
       {/* Animated code lines */}
       <Box
-        sx={{
+        sx={(theme) => ({
           position: 'absolute',
           top: '5%',
           right: '0%',
-          opacity: 0.6,
-        }}
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
+          backdropFilter: 'blur(8px)',
+          border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.2)}`,
+          boxShadow: theme.vars.customShadows.z8,
+        })}
       >
         <m.div
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           <Typography
             component="pre"
             sx={{
-              fontFamily: 'monospace',
-              fontSize: 11,
-              color: 'primary.main',
+              fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
+              fontSize: 10,
+              lineHeight: 1.6,
               textAlign: 'left',
+              m: 0,
+              color: '#e4e4e7',
+              '& .keyword': { color: '#c084fc' },
+              '& .string': { color: '#4ade80' },
+              '& .property': { color: '#60a5fa' },
+              '& .punctuation': { color: '#a1a1aa' },
             }}
           >
-{`const developer = {
-  name: "Steeven",
-  passion: "Code & IA"
-};`}
+            <span className="keyword">const</span> <span style={{ color: '#f4f4f5' }}>developer</span> <span className="punctuation">=</span> {'{\n'}
+            {'  '}<span className="property">name</span><span className="punctuation">:</span> <span className="string">&quot;Steeven&quot;</span><span className="punctuation">,</span>{'\n'}
+            {'  '}<span className="property">stack</span><span className="punctuation">:</span> <span className="string">&quot;Full Stack&quot;</span><span className="punctuation">,</span>{'\n'}
+            {'  '}<span className="property">passion</span><span className="punctuation">:</span> <span className="string">&quot;IA &amp; Code&quot;</span>{'\n'}
+            {'}'}<span className="punctuation">;</span>
           </Typography>
         </m.div>
       </Box>
 
       <Box
-        sx={{
+        sx={(theme) => ({
           position: 'absolute',
           bottom: '15%',
           left: '0%',
-          opacity: 0.6,
-        }}
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: varAlpha(theme.vars.palette.grey['900Channel'], 0.9),
+          backdropFilter: 'blur(8px)',
+          border: `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.2)}`,
+          boxShadow: theme.vars.customShadows.z8,
+        })}
       >
         <m.div
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
         >
           <Typography
             component="pre"
             sx={{
-              fontFamily: 'monospace',
-              fontSize: 11,
-              color: 'secondary.main',
+              fontFamily: '"Fira Code", "SF Mono", Consolas, monospace',
+              fontSize: 10,
+              lineHeight: 1.6,
               textAlign: 'left',
+              m: 0,
+              color: '#e4e4e7',
+              '& .keyword': { color: '#f472b6' },
+              '& .function': { color: '#fbbf24' },
+              '& .comment': { color: '#71717a' },
+              '& .punctuation': { color: '#a1a1aa' },
             }}
           >
-{`async transform(idea) {
-  return solution;
-}`}
+            {/* prettier-ignore */}
+            <span className="comment">{`${'//'}Transform ideas`}</span>{'\n'}
+            <span className="keyword">async</span> <span className="function">build</span><span className="punctuation">(</span>idea<span className="punctuation">)</span> {'{\n'}
+            {'  '}<span className="keyword">return</span> solution<span className="punctuation">;</span>{'\n'}
+            {'}'}
           </Typography>
         </m.div>
       </Box>

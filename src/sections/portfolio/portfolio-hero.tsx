@@ -18,11 +18,12 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 const FLOATING_ICONS = [
   { icon: 'logos:laravel', size: 48, delay: 0 },
-  { icon: 'logos:react', size: 44, delay: 0.5 },
-  { icon: 'logos:typescript-icon', size: 40, delay: 1 },
-  { icon: 'logos:swift', size: 42, delay: 1.5 },
-  { icon: 'logos:nodejs-icon', size: 46, delay: 2 },
-  { icon: 'logos:openai-icon', size: 50, delay: 2.5 },
+  { icon: 'logos:react', size: 44, delay: 0.4 },
+  { icon: 'logos:typescript-icon', size: 40, delay: 0.8 },
+  { icon: 'logos:swift', size: 42, delay: 1.2 },
+  { icon: 'logos:nodejs-icon', size: 46, delay: 1.6 },
+  { icon: 'logos:openai-icon', size: 50, delay: 2 },
+  { icon: 'simple-icons:anthropic', size: 44, delay: 2.4 },
 ];
 
 // ----------------------------------------------------------------------
@@ -79,6 +80,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
           { name: 'Swift', icon: 'logos:swift' },
           { name: 'Node.js', icon: 'logos:nodejs-icon' },
           { name: 'n8n', icon: 'simple-icons:n8n' },
+          { name: 'ChatGPT', icon: 'logos:openai-icon' },
         ].map((tech) => (
           <m.div key={tech.name} variants={variants}>
             <Box

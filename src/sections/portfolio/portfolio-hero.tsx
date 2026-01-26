@@ -94,7 +94,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
   );
 
   const renderActions = () => (
-    <Box sx={{ mt: 5, gap: 2, display: 'flex', flexWrap: 'wrap' }}>
+    <Box sx={{ mt: 5, gap: 2, display: 'flex', flexWrap: 'wrap', justifyContent: { xs: 'center', md: 'flex-start' } }}>
       <m.div variants={variants}>
         <Button
           size="large"
@@ -117,6 +117,32 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
           Me contacter
         </Button>
       </m.div>
+    </Box>
+  );
+
+  const renderImage = () => (
+    <Box
+      component={m.div}
+      variants={varFade('inRight', { distance: 40 })}
+      sx={{
+        flex: '1 1 auto',
+        display: { xs: 'none', md: 'flex' },
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Box
+        component="img"
+        alt="Steeven Jacques"
+        src={`${CONFIG.assetsDir}/assets/images/portrait/steeven-serious.png`}
+        sx={{
+          maxWidth: 420,
+          width: '100%',
+          height: 'auto',
+          objectFit: 'contain',
+          filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+        }}
+      />
     </Box>
   );
 
@@ -147,17 +173,28 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       ]}
       {...other}
     >
-      <Container>
+      <Container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 5, md: 8 },
+        }}
+      >
         <MotionViewport
           sx={{
-            maxWidth: 680,
+            maxWidth: 580,
             textAlign: { xs: 'center', md: 'left' },
-            mx: { xs: 'auto', md: 0 },
           }}
         >
           {renderTexts()}
           {renderTechStack()}
           {renderActions()}
+        </MotionViewport>
+
+        <MotionViewport>
+          {renderImage()}
         </MotionViewport>
       </Container>
     </Box>

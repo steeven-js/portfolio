@@ -310,7 +310,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         }}
         sx={(theme) => ({
           position: 'absolute',
-          bottom: '20%',
+          bottom: '10%',
           left: '5%',
           zIndex: 0,
           p: 1.5,

@@ -32,13 +32,13 @@ export function SettingsDrawer({ sx, defaultSettings }: SettingsDrawerProps) {
   const settings = useSettingsContext();
   const { mode, setMode, colorScheme } = useColorScheme();
 
-  // Visible options by default settings
+  // Visible options - only mode toggle for portfolio
   const visibility = {
-    mode: hasKeys(defaultSettings, ['mode']),
-    fontSize: hasKeys(defaultSettings, ['fontSize']),
-    direction: hasKeys(defaultSettings, ['direction']),
-    fontFamily: hasKeys(defaultSettings, ['fontFamily']),
-    primaryColor: hasKeys(defaultSettings, ['primaryColor']),
+    mode: true,
+    fontSize: false,
+    direction: false,
+    fontFamily: false,
+    primaryColor: false,
   };
 
   useEffect(() => {

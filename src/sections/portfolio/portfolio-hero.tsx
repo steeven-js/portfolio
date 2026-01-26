@@ -248,6 +248,15 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
 
       {/* Animated code lines */}
       <Box
+        component={m.div}
+        animate={{
+          x: [0, 8, 0, -8, 0],
+          y: [0, -8, 0, 8, 0],
+        }}
+        transition={{
+          x: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+          y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
+        }}
         sx={(theme) => ({
           position: 'absolute',
           top: '-5%',
@@ -290,10 +299,19 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
       </Box>
 
       <Box
+        component={m.div}
+        animate={{
+          x: [0, -8, 0, 8, 0],
+          y: [0, 8, 0, -8, 0],
+        }}
+        transition={{
+          x: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+          y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+        }}
         sx={(theme) => ({
           position: 'absolute',
-          bottom: '0%',
-          left: '-15%',
+          bottom: '20%',
+          left: '5%',
           zIndex: 0,
           p: 1.5,
           borderRadius: 1.5,

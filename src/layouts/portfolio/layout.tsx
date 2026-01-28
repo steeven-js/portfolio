@@ -28,6 +28,7 @@ export type PortfolioLayoutProps = LayoutBaseProps & {
 const NAV_ITEMS = [
   { title: 'Accueil', href: '#' },
   { title: 'Competences', href: '#about' },
+  { title: 'Parcours', href: '#certifications' },
   { title: 'Projets', href: '#projects' },
   { title: 'Contact', href: '#contact' },
 ];

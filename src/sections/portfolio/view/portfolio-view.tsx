@@ -5,6 +5,7 @@ import { PortfolioHero } from '../portfolio-hero';
 import { PortfolioAbout } from '../portfolio-about';
 import { PortfolioContact } from '../portfolio-contact';
 import { PortfolioProjects } from '../portfolio-projects';
+import { PortfolioCertifications } from '../portfolio-certifications';
 
 // ----------------------------------------------------------------------
 
@@ -24,6 +25,8 @@ export function PortfolioView() {
       <PortfolioHero />
 
       <PortfolioAbout />
+
+      <PortfolioCertifications />
 
       <PortfolioProjects />
 

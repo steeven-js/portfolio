@@ -57,9 +57,9 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
 
       <m.div variants={variants}>
         <Typography sx={{ maxWidth: 520, color: 'text.secondary', mt: 3 }}>
-          Developpeur passione specialise dans la creation d&apos;applications web et mobiles
-          modernes. Laravel, React, Swift, automatisation - je transforme vos idees en solutions
-          numeriques performantes.
+          Développeur passionné spécialisé dans la création d&apos;applications web, mobiles et
+          l&apos;intelligence artificielle. Laravel, React, Swift, automatisation IA - je transforme
+          vos idées en solutions numériques performantes.
         </Typography>
       </m.div>
     </>

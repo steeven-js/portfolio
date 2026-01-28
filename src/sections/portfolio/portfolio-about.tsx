@@ -18,6 +18,12 @@ const variants: Variants = varFade('inUp', { distance: 24 });
 
 const SKILLS = [
   {
+    title: 'Automatisation & IA',
+    description: 'Workflows d\'automatisation n8n et integration d\'IA pour optimiser les processus.',
+    icon: 'solar:cpu-bolt-bold-duotone',
+    skills: ['n8n', 'Claude', 'OpenAI API', 'GPT-4', 'Webhooks'],
+  },
+  {
     title: 'Developpement Backend',
     description: 'APIs robustes et performantes avec Laravel, gestion de bases de donnees et architecture scalable.',
     icon: 'solar:server-bold-duotone',
@@ -34,12 +40,6 @@ const SKILLS = [
     description: 'Applications iOS natives avec SwiftUI, integration APIs et notifications push.',
     icon: 'solar:smartphone-bold-duotone',
     skills: ['Swift', 'SwiftUI', 'SwiftData', 'WidgetKit'],
-  },
-  {
-    title: 'Automatisation & IA',
-    description: 'Workflows d\'automatisation n8n et integration d\'IA pour optimiser les processus.',
-    icon: 'solar:cpu-bolt-bold-duotone',
-    skills: ['n8n', 'OpenAI API', 'GPT-4', 'Webhooks', 'Telegram'],
   },
 ];
 
@@ -69,10 +69,10 @@ export function PortfolioAbout({ sx, ...other }: BoxProps) {
   );
 
   const renderSkills = () => (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} sx={{ alignItems: 'stretch' }}>
       {SKILLS.map((skill, index) => (
-        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={skill.title}>
-          <m.div variants={varFade('inUp', { distance: 24 })}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={skill.title} sx={{ display: 'flex' }}>
+          <m.div variants={varFade('inUp', { distance: 24 })} style={{ width: '100%' }}>
             <SkillCard skill={skill} index={index} />
           </m.div>
         </Grid>

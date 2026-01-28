@@ -24,7 +24,7 @@
     "tsc:print": "npx tsc --showConfig"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "22.x"
   },
   "packageManager": "yarn@1.22.22",
   "dependencies": {
@@ -40,6 +40,7 @@
     "@iconify/react": "^6.0.2",
     "@mui/lab": "^7.0.1-beta.20",
     "@mui/material": "^7.3.6",
+    "@mui/system": "^7.3.6",
     "@mui/stylis-plugin-rtl": "^7.3.6",
     "@mui/x-data-grid": "^8.22.0",
     "@mui/x-date-pickers": "^8.22.0",

@@ -262,7 +262,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         }}
         sx={(theme) => ({
           position: 'absolute',
-          top: '-5%',
+          top: '-12%',
           right: '-10%',
           zIndex: 0,
           p: 1.5,
@@ -326,7 +326,7 @@ export function PortfolioHero({ sx, ...other }: BoxProps) {
         }}
         sx={(theme) => ({
           position: 'absolute',
-          bottom: '10%',
+          bottom: '-10%',
           left: '5%',
           zIndex: 0,
           p: 1.5,

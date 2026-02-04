@@ -1,8 +1,9 @@
 import type { Variants } from 'framer-motion';
 import type { BoxProps } from '@mui/material/Box';
 
-import { m } from 'framer-motion';
+import { useState } from 'react';
 import { varAlpha } from 'minimal-shared/utils';
+import { m, AnimatePresence } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -10,6 +11,7 @@ import Chip from '@mui/material/Chip';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionViewport } from 'src/components/animate';
@@ -31,6 +33,7 @@ type Certification = {
   category: 'diploma' | 'certification' | 'training' | 'experience' | 'title';
   icon: string;
   colorKey: ColorKey;
+  details?: string[];
 };
 
 const CERTIFICATIONS: Certification[] = [
@@ -98,6 +101,40 @@ const CERTIFICATIONS: Certification[] = [
 const EXPERIENCES: Certification[] = [
   // Tri chronologique du plus recent au plus ancien
   {
+    id: 'exp-3',
+    title: 'Technicien portabilite',
+    issuer: 'Digicel',
+    location: 'Martinique',
+    date: 'En poste',
+    period: '05/02/2026 - Present',
+    category: 'experience',
+    icon: 'solar:transmission-bold-duotone',
+    colorKey: 'success',
+    details: [
+      'Traitement des demandes de portabilite entrantes et sortantes',
+      'Suivi des dossiers et respect des delais reglementaires (ARCEP)',
+      'Interface avec les operateurs via le GIP (Guichet Inter-operateurs)',
+      'Resolution des anomalies et reclamations clients liees a la portabilite',
+    ],
+  },
+  {
+    id: 'exp-madin',
+    title: 'CTO / Developpeur principal',
+    issuer: 'Madin.IA',
+    location: 'Fort-de-France, Martinique',
+    date: 'En cours',
+    period: '10/2024 - Present (Freelance)',
+    category: 'experience',
+    icon: 'solar:code-square-bold-duotone',
+    colorKey: 'info',
+    details: [
+      'Pilotage de la strategie technique et des standards de developpement',
+      'Conception, developpement et deploiement du site web Madin.IA',
+      'Realisation d\'un dashboard de facturation avec automatisation',
+      'Developpement d\'evolutions produit et maintenance applicative',
+    ],
+  },
+  {
     id: 'exp-2',
     title: 'Agent logistique en lien avec la sterilisation',
     issuer: 'Clinique Sainte-Paul',
@@ -107,6 +144,12 @@ const EXPERIENCES: Certification[] = [
     category: 'experience',
     icon: 'solar:hospital-bold-duotone',
     colorKey: 'primary',
+    details: [
+      'Gravure et tracabilite des instruments ; creation et gestion des sets operatoires',
+      'Gestion d\'inventaire et suivi complet du circuit des sets',
+      'Informatisation du parc d\'instruments dans un logiciel de gestion du bloc',
+      'Suivi informatique des pertes, casses et remplacements',
+    ],
   },
   {
     id: 'exp-1',
@@ -118,6 +161,12 @@ const EXPERIENCES: Certification[] = [
     category: 'experience',
     icon: 'solar:hospital-bold-duotone',
     colorKey: 'error',
+    details: [
+      'Reception, tri et lavage des dispositifs medicaux',
+      'Conditionnement et conduite des cycles de sterilisation (autoclaves)',
+      'Controle qualite et tracabilite des operations',
+      'Respect des protocoles d\'hygiene et des normes en vigueur',
+    ],
   },
 ];
 
@@ -217,6 +266,9 @@ type CertificationCardProps = {
 
 function CertificationCard({ certification }: CertificationCardProps) {
   const theme = useTheme();
+  const [expanded, setExpanded] = useState(false);
+
+  const hasDetails = certification.details && certification.details.length > 0;
 
   const getColorChannel = (colorKey: ColorKey) => theme.vars.palette[colorKey].mainChannel;
 
@@ -242,8 +294,15 @@ function CertificationCard({ certification }: CertificationCardProps) {
   const colorChannel = getColorChannel(certification.colorKey);
   const colorMain = getColorMain(certification.colorKey);
 
+  const handleToggle = () => {
+    if (hasDetails) {
+      setExpanded(!expanded);
+    }
+  };
+
   return (
     <Box
+      onClick={handleToggle}
       sx={(themeParam) => ({
         p: 3,
         height: '100%',
@@ -253,10 +312,11 @@ function CertificationCard({ certification }: CertificationCardProps) {
         bgcolor: 'background.paper',
         border: `1px solid ${varAlpha(themeParam.vars.palette.grey['500Channel'], 0.12)}`,
         transition: themeParam.transitions.create(['transform', 'box-shadow', 'border-color']),
+        cursor: hasDetails ? 'pointer' : 'default',
         '&:hover': {
           borderColor: colorMain,
-          transform: 'translateY(-4px)',
-          boxShadow: themeParam.vars.customShadows.z16,
+          transform: hasDetails ? 'translateY(-4px)' : 'none',
+          boxShadow: hasDetails ? themeParam.vars.customShadows.z16 : 'none',
         },
       })}
     >
@@ -308,6 +368,19 @@ function CertificationCard({ certification }: CertificationCardProps) {
             {certification.title}
           </Typography>
         </Box>
+
+        {hasDetails && (
+          <IconButton
+            size="small"
+            sx={{
+              ml: 'auto',
+              transition: theme.transitions.create('transform'),
+              transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            }}
+          >
+            <Iconify icon="solar:alt-arrow-down-bold-duotone" width={20} />
+          </IconButton>
+        )}
       </Box>
 
       <Box sx={{ flex: 1 }}>
@@ -339,6 +412,36 @@ function CertificationCard({ certification }: CertificationCardProps) {
           </Typography>
         )}
       </Box>
+
+      <AnimatePresence>
+        {expanded && hasDetails && (
+          <m.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
+          >
+            <Box
+              sx={(themeParam) => ({
+                mt: 2,
+                pt: 2,
+                borderTop: `1px dashed ${varAlpha(themeParam.vars.palette.grey['500Channel'], 0.2)}`,
+              })}
+            >
+              {certification.details?.map((detail, index) => (
+                <Typography
+                  key={index}
+                  variant="body2"
+                  sx={{ color: 'text.secondary', mb: 0.5, '&:last-child': { mb: 0 } }}
+                >
+                  • {detail}
+                </Typography>
+              ))}
+            </Box>
+          </m.div>
+        )}
+      </AnimatePresence>
 
       <Box
         sx={(themeParam) => ({

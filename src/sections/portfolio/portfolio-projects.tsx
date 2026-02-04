@@ -7,9 +7,11 @@ import { varAlpha } from 'minimal-shared/utils';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
+import Link from '@mui/material/Link';
 import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 import CardContent from '@mui/material/CardContent';
 
 import { Iconify } from 'src/components/iconify';
@@ -28,20 +30,11 @@ type Project = {
   features: string[];
   icon: string;
   color: string;
+  githubUrl?: string;
+  appStoreUrl?: string;
 };
 
 const PROJECTS: Project[] = [
-  {
-    id: 'madinia-dashboard',
-    title: 'Madinia Dashboard',
-    subtitle: 'CRM & Gestion Comptable',
-    description:
-      'Systeme complet de gestion commerciale et comptable. Gestion des devis, factures, avoirs, relances et suivi TVA avec dashboard analytique.',
-    technologies: ['Laravel 12', 'Filament 4', 'Supabase', 'Tailwind CSS'],
-    features: ['Devis & Factures', 'Gestion TVA', 'Relances automatiques', 'Dashboard comptable'],
-    icon: 'solar:chart-bold-duotone',
-    color: '#FA541C',
-  },
   {
     id: 'madinia-mobile',
     title: 'Madinia Mobile App',
@@ -52,6 +45,8 @@ const PROJECTS: Project[] = [
     features: ['Catalogue formations', 'Coach IA Madi', 'Push notifications', 'Blog integre'],
     icon: 'solar:smartphone-bold-duotone',
     color: '#8E33FF',
+    githubUrl: 'https://github.com/steeven-js/madiniamobileapp',
+    appStoreUrl: 'https://apps.apple.com/fr/app/madin-ia/id6758285745',
   },
   {
     id: 'mysubguard',
@@ -63,6 +58,19 @@ const PROJECTS: Project[] = [
     features: ['Scan IA factures', 'Widget iOS', 'Rappels', 'Analytics anonymes'],
     icon: 'solar:wallet-bold-duotone',
     color: '#00B8D9',
+    githubUrl: 'https://github.com/steeven-js/MySubguard',
+    appStoreUrl: 'https://apps.apple.com/fr/app/mysubguard/id6758056915',
+  },
+  {
+    id: 'madinia-dashboard',
+    title: 'Madinia Dashboard',
+    subtitle: 'CRM & Gestion Comptable',
+    description:
+      'Systeme complet de gestion commerciale et comptable. Gestion des devis, factures, avoirs, relances et suivi TVA avec dashboard analytique.',
+    technologies: ['Laravel 12', 'Filament 4', 'Supabase', 'Tailwind CSS'],
+    features: ['Devis & Factures', 'Gestion TVA', 'Relances automatiques', 'Dashboard comptable'],
+    icon: 'solar:chart-bold-duotone',
+    color: '#FA541C',
   },
   {
     id: 'n8n-workflows',
@@ -244,6 +252,35 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             ))}
           </Box>
         </Box>
+
+        {(project.githubUrl || project.appStoreUrl) && (
+          <Box sx={{ display: 'flex', gap: 1, mt: 2, pt: 2, borderTop: (theme) => `1px dashed ${varAlpha(theme.vars.palette.grey['500Channel'], 0.2)}` }}>
+            {project.githubUrl && (
+              <IconButton
+                component={Link}
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener"
+                size="small"
+                sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+              >
+                <Iconify icon="mdi:github" width={22} />
+              </IconButton>
+            )}
+            {project.appStoreUrl && (
+              <IconButton
+                component={Link}
+                href={project.appStoreUrl}
+                target="_blank"
+                rel="noopener"
+                size="small"
+                sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+              >
+                <Iconify icon="mdi:apple" width={22} />
+              </IconButton>
+            )}
+          </Box>
+        )}
       </CardContent>
     </Card>
   );

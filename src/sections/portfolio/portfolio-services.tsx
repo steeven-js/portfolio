@@ -37,7 +37,7 @@ const SERVICES: Service[] = [
     title: 'Agents IA Personnalisés',
     description:
       'Chatbots intelligents connectés à vos données, assistants relation client et automatisation de processus métier avec l\'IA générative.',
-    icon: 'solar:bot-bold-duotone',
+    icon: 'solar:magic-stick-3-bold-duotone',
     features: [
       {
         name: 'Chatbots RAG',

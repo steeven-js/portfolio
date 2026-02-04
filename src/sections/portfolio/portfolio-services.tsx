@@ -34,6 +34,58 @@ type Service = {
 
 const SERVICES: Service[] = [
   {
+    title: 'Agents IA Personnalisés',
+    description:
+      'Chatbots intelligents connectés à vos données, assistants relation client et automatisation de processus métier avec l\'IA générative.',
+    icon: 'solar:bot-bold-duotone',
+    features: [
+      {
+        name: 'Chatbots RAG',
+        description: 'Assistants IA qui répondent en se basant sur vos documents',
+        icon: 'solar:chat-round-dots-bold-duotone',
+        details: [
+          'Connexion à vos bases de données et documents',
+          'Réponses contextualisées et sourcées',
+          'Mémoire conversationnelle persistante',
+          'Interface web ou intégration à vos outils',
+        ],
+      },
+      {
+        name: 'Relation client IA',
+        description: 'Support client automatisé et intelligent 24/7',
+        icon: 'solar:users-group-rounded-bold-duotone',
+        details: [
+          'Réponses automatiques aux questions fréquentes',
+          'Escalade intelligente vers un humain si nécessaire',
+          'Analyse du sentiment et priorisation',
+          'Intégration CRM et historique client',
+        ],
+      },
+      {
+        name: 'Insights & Analytics',
+        description: 'Extraction automatique d\'insights depuis vos données',
+        icon: 'solar:graph-up-bold-duotone',
+        details: [
+          'Analyse automatique de feedbacks clients',
+          'Résumés et tendances générés par IA',
+          'Alertes sur anomalies détectées',
+          'Rapports personnalisés en langage naturel',
+        ],
+      },
+      {
+        name: 'Automatisation IA',
+        description: 'Workflows intelligents qui s\'adaptent au contexte',
+        icon: 'solar:route-bold-duotone',
+        details: [
+          'Traitement automatique d\'emails et documents',
+          'Classification et routage intelligent',
+          'Génération de contenu personnalisé',
+          'Intégration n8n, Make et APIs tierces',
+        ],
+      },
+    ],
+  },
+  {
     title: 'Développement Web Full Stack',
     description:
       'Applications web modernes et performantes avec Laravel et React. APIs robustes, interfaces réactives et architecture scalable.',

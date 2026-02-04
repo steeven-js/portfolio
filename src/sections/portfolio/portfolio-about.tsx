@@ -18,10 +18,10 @@ const variants: Variants = varFade('inUp', { distance: 24 });
 
 const SKILLS = [
   {
-    title: 'Automatisation & IA',
-    description: 'Workflows d\'automatisation n8n et integration d\'IA pour optimiser les processus.',
+    title: 'Agents IA & Automatisation',
+    description: 'Developpement d\'agents IA personnalises, chatbots RAG connectes aux bases de donnees et workflows d\'automatisation.',
     icon: 'solar:cpu-bolt-bold-duotone',
-    skills: ['n8n', 'Claude', 'OpenAI API', 'GPT-4', 'Webhooks'],
+    skills: ['Claude', 'OpenAI', 'RAG', 'n8n', 'LangChain'],
   },
   {
     title: 'Developpement Backend',

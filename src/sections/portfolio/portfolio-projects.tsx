@@ -62,6 +62,17 @@ const PROJECTS: Project[] = [
     appStoreUrl: 'https://apps.apple.com/fr/app/mysubguard/id6758056915',
   },
   {
+    id: 'ai-agents',
+    title: 'Agents IA Personnalises',
+    subtitle: 'Chatbots & Automatisation IA',
+    description:
+      'Developpement d\'agents IA sur mesure: chatbots RAG connectes aux bases de donnees, assistants relation client, analyse d\'insights et automatisation de processus metier.',
+    technologies: ['Claude API', 'OpenAI', 'RAG', 'LangChain', 'n8n'],
+    features: ['Chatbots RAG', 'Base de donnees securisee', 'Insights clients', 'Automatisation'],
+    icon: 'solar:bot-bold-duotone',
+    color: '#7C3AED',
+  },
+  {
     id: 'madinia-dashboard',
     title: 'Madinia Dashboard',
     subtitle: 'CRM & Gestion Comptable',
